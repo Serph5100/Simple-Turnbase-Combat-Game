@@ -265,6 +265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 710143448}
     m_Modifications:
+    - target: {fileID: 3220229351780510727, guid: ee3f2328f12a5694e92425d98a380e09, type: 3}
+      propertyPath: obstacle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7017497021262627712, guid: ee3f2328f12a5694e92425d98a380e09, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -473,6 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 374510895}
   - component: {fileID: 374510894}
+  - component: {fileID: 374510896}
   m_Layer: 0
   m_Name: UnitController
   m_TagString: Untagged
@@ -492,6 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cb16138f47a7f4085d34ed2b08a8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 1
 --- !u!4 &374510895
 Transform:
   m_ObjectHideFlags: 0
@@ -507,6 +513,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &374510896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374510893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76595ba424a0b740a1764c64d0ba50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startCords: {x: 0, y: 0}
+  targetCords: {x: 0, y: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +914,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 710143448}
     m_Modifications:
+    - target: {fileID: 3220229351780510727, guid: ee3f2328f12a5694e92425d98a380e09, type: 3}
+      propertyPath: obstacle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7017497021262627712, guid: ee3f2328f12a5694e92425d98a380e09, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -1044,6 +1068,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 710143448}
     m_Modifications:
+    - target: {fileID: 3220229351780510727, guid: ee3f2328f12a5694e92425d98a380e09, type: 3}
+      propertyPath: obstacle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7017497021262627712, guid: ee3f2328f12a5694e92425d98a380e09, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
