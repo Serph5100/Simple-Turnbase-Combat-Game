@@ -490,8 +490,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fabb0530cc4d4bd43a3a93cfd008a9d6, type: 2}
   - {fileID: 11400000, guid: bf0666c1ae42224488bf00a91bc7cee3, type: 2}
   - {fileID: 11400000, guid: a33ed074e61be254388e390f0f13a6bd, type: 2}
-  mapSizeX: 5
-  mapSizeY: 5
+  tileSize: 1
+  mapSizeX: 10
+  mapSizeY: 10
 --- !u!4 &1686331070
 Transform:
   m_ObjectHideFlags: 0
