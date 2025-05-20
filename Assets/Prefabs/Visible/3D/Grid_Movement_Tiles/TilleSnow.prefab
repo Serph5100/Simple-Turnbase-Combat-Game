@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3378292468140235380}
   - component: {fileID: 6872389134037670780}
   - component: {fileID: 4185288970867502312}
+  - component: {fileID: 549923271860792671}
   m_Layer: 0
   m_Name: TilleSnow
   m_TagString: Untagged
@@ -109,3 +110,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &549923271860792671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012935015092326023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93c987ef4440224285bcf34c5a89689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileX: 0
+  tileY: 0
+  map: {fileID: 0}
