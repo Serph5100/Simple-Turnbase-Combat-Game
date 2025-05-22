@@ -97,6 +97,20 @@ namespace Grid_Movement
         }
 
 
+        public float CostToEnterTile(int sourceX, int sourceY, int targetX, int targetY)
+        {
+            TileType tt = tileTypes[tiles[targetX, targetY]];
+
+            float cost = tt.GetMovementCost();
+
+            if (sourceX != targetX && sourceY != targetY)
+            {
+                cost += 0.001f; // Diagonal movement cost
+            }
+            
+            return cost;
+        }
+
         void GenerateMapVisual()
         {
             for (int x = 0; x < mapSizeX; x++)
@@ -166,12 +180,32 @@ namespace Grid_Movement
             return new Vector3(x * tileSize, 0, y * tileSize);
         }
 
+
+        public bool UnitCanMoveTo(int x, int y)
+        {
+            TileType tt = tileTypes[tiles[x, y]];
+            if (tt.isWalkable)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void GeneratePathTo(int x, int y)
         {
 
             /* selectedUnit.GetComponent<UnitController>().unitX = x;
             selectedUnit.GetComponent<UnitController>().unitY = y;
             selectedUnit.transform.position = TileCordToWorldCord(x, y); */
+
+            if (!UnitCanMoveTo(x, y))
+            {
+                Debug.Log("Cannot move to this tile");
+                return;
+            }
+
+            selectedUnit.GetComponent<UnitController>().ClearPath();
+
 
             Dictionary<Node, float> distances = new Dictionary<Node, float>();
             Dictionary<Node, Node> previous = new Dictionary<Node, Node>();
@@ -216,7 +250,7 @@ namespace Grid_Movement
 
                 foreach (Node v in u.neighbors)
                 {
-                    float alt = distances[u] + u.DistanceTo(v);
+                    float alt = distances[u] + CostToEnterTile(u.x, u.y, v.x, v.y);
                     if (alt < distances[v])
                     {
                         distances[v] = alt;

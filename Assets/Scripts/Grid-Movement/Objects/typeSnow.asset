@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: snow
   tilePrefab: {fileID: 6012935015092326023, guid: 9da563ba90e93724eb267637297d8a6a, type: 3}
-  isWalkable: 1
+  movementCost: 100
+  isWalkable: 0

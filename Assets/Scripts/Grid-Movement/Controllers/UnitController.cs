@@ -10,6 +10,8 @@ namespace Grid_Movement
         public int unitY;
         public TileMap map;
 
+        [SerializeField] float unitSpeed = 1f;
+
         List<TileMap.Node> currentPath;
 
         void Update()
@@ -28,11 +30,36 @@ namespace Grid_Movement
             }
         }
 
-        public void MoveToTile(int x, int y)
+        public void MoveToNextTile()
         {
-            unitX = x;
-            unitY = y;
-            transform.position = new Vector3(x, 0, y);
+            float remainingMovement = unitSpeed;
+
+            while (remainingMovement > 0)
+            {
+                if (currentPath == null || currentPath.Count == 0) return;
+
+            
+            remainingMovement -= map.CostToEnterTile(currentPath[0].x, currentPath[0].y, currentPath[1].x, currentPath[1].y);
+
+            //Set unit position to next node
+            unitX = currentPath[1].x;
+            unitY = currentPath[1].y;
+
+            //Move unit to next node in currentPath[0]
+            //Move Instantaneously
+            transform.position = map.TileCordToWorldCord(unitX, unitY);
+            
+            //Remove current node
+            currentPath.RemoveAt(0);
+
+            //Destination reached
+                if (currentPath.Count == 1)
+                {
+                    ClearPath();
+
+                }
+                
+            }
         }
 
         public void ClearPath()
