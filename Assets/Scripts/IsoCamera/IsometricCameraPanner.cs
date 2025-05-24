@@ -16,24 +16,33 @@ public class IsometricCameraPanner : MonoBehaviour
         {
             Debug.LogError("Camera component not found on this GameObject.");
         }
-        
+
     }
     void Update()
     {
-        Vector2 panPosition = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (Input.GetMouseButton(0))
+        {
+            float dragSpeed = panSpeed * 0.1f;
+            float mouseX = -Input.GetAxis("Mouse X");
+            float mouseY = -Input.GetAxis("Mouse Y");
 
-        //transform.position += new Vector3(panPosition.x, 0, panPosition.y) * (panSpeed * Time.deltaTime);
-        transform.position +=
-        Quaternion.Euler(0, _camera.transform.eulerAngles.y, 0) *
-        new Vector3(panPosition.x, 0, panPosition.y) *
-        (panSpeed * Time.deltaTime);
+            Vector3 drag = Quaternion.Euler(0, _camera.transform.eulerAngles.y, 0) *
+                   new Vector3(mouseX, 0, mouseY) * dragSpeed;
 
-        // Clamp the camera position to the defined limits
-        transform.position = new Vector3(
+            transform.position += drag;
+
+            // Clamp the camera position to the defined limits
+            transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, panLimitX.x, panLimitX.y),
             transform.position.y,
             Mathf.Clamp(transform.position.z, panLimitZ.x, panLimitZ.y)
-        );
-        
+            );
+        }
+
+    }
+    
+    public void ResetPosition()
+    {
+        transform.position = new Vector3(0, 0, 0);
     }
 }
