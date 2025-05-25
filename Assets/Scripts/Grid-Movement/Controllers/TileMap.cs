@@ -206,79 +206,73 @@ namespace Grid_Movement
 
             selectedUnit.GetComponent<UnitController>().ClearPath();
 
+            // Dijkstra's Algorithm for pathfinding
 
-            Dictionary<Node, float> distances = new Dictionary<Node, float>();
-            Dictionary<Node, Node> previous = new Dictionary<Node, Node>();
 
-            List<Node> unvisited = new List<Node>();
+            Dictionary<Node, float> gScore = new Dictionary<Node, float>();
+            Dictionary<Node, float> fScore = new Dictionary<Node, float>();
+            Dictionary<Node, Node> cameFrom = new Dictionary<Node, Node>();
+            PriorityQueue<Node, float> openSet = new PriorityQueue<Node, float>();
 
-            Node startNode = graph[
-                selectedUnit.GetComponent<UnitController>().unitX,
-                selectedUnit.GetComponent<UnitController>().unitY
-                ];
-
+            Node startNode = graph[selectedUnit.GetComponent<UnitController>().unitX, selectedUnit.GetComponent<UnitController>().unitY];
             Node endNode = graph[x, y];
 
-            distances[startNode] = 0;
-            previous[startNode] = null;
-
+            // Initialize scores
             foreach (Node node in graph)
             {
-                if (node != startNode)
-                {
-                    distances[node] = float.MaxValue;
-                    previous[node] = null;
-                }
-                unvisited.Add(node);
-            }
+            gScore[node] = float.MaxValue;
+            fScore[node] = float.MaxValue;
+            cameFrom[node] = null;
+        }
+            gScore[startNode] = 0;
+            fScore[startNode] = startNode.DistanceTo(endNode);
+            openSet.Enqueue(startNode, fScore[startNode]);
 
-            while (unvisited.Count > 0)
+            while (openSet.Count > 0)
             {
-                Node u = null;
+            Node current = openSet.Dequeue();
 
-                foreach (Node node in unvisited)
-                {
-                    if (u == null || distances[node] < distances[u])
-                    {
-                        u = node;
-                    }
-                }
-
-                if (u == endNode) break;
-
-                unvisited.Remove(u);
-
-                foreach (Node v in u.neighbors)
-                {
-                    float alt = distances[u] + CostToEnterTile(u.x, u.y, v.x, v.y);
-                    if (alt < distances[v])
-                    {
-                        distances[v] = alt;
-                        previous[v] = u;
-                    }
-                }
-
-            }
-
-            if (distances[endNode] == float.MaxValue)
+            // Early exit if goal is reached
+            if (current == endNode)
             {
-                Debug.Log("No path found");
-                return;
+            break;
             }
 
-            List<Node> currentPath = new List<Node>();
+        foreach (Node neighbor in current.neighbors)
+        {
+            // Calculate tentative gScore (current cost + movement cost)
+            float tentative_gScore = gScore[current] + CostToEnterTile(current.x, current.y, neighbor.x, neighbor.y);
 
-            Node currentNode = endNode;
-
-            while (previous[currentNode] != null)
+            // Update if this path is better
+            if (tentative_gScore < gScore[neighbor])
             {
-                currentPath.Add(currentNode);
-                currentNode = previous[currentNode];
+                cameFrom[neighbor] = current;
+                gScore[neighbor] = tentative_gScore;
+                fScore[neighbor] = tentative_gScore + neighbor.DistanceTo(endNode);
+
+                // Add to openSet
+                openSet.Enqueue(neighbor, fScore[neighbor]);
             }
+        }
+    }
 
-            currentPath.Reverse();
+    // Reconstruct path (same as before)
+    if (gScore[endNode] == float.MaxValue)
+    {
+        Debug.Log("No path found");
+        return;
+    }
 
-            selectedUnit.GetComponent<UnitController>().SetPath(currentPath);
+    List<Node> currentPath = new List<Node>();
+    Node currentNode = endNode;
+    while (cameFrom[currentNode] != null)
+    {
+        currentPath.Add(currentNode);
+        currentNode = cameFrom[currentNode];
+    }
+    currentPath.Reverse();
+
+    selectedUnit.GetComponent<UnitController>().SetPath(currentPath);
         }
 
 
