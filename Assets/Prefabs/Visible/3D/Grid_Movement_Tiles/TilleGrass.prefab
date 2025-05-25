@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8484127344284499330}
   - component: {fileID: 5984335334030428705}
   - component: {fileID: 3598473500639075908}
+  - component: {fileID: 6320658039701152306}
   m_Layer: 0
   m_Name: TilleGrass
   m_TagString: Untagged
@@ -109,3 +110,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6320658039701152306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184570512784924628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93c987ef4440224285bcf34c5a89689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileX: 0
+  tileY: 0
+  map: {fileID: 0}
