@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5434040642975307606}
   - component: {fileID: 8936910837505199744}
   - component: {fileID: -5857015614877936307}
+  - component: {fileID: 2022681434806221536}
   m_Layer: 0
   m_Name: TilleRocks
   m_TagString: Untagged
@@ -125,3 +126,18 @@ MonoBehaviour:
   tileX: 0
   tileY: 0
   map: {fileID: 0}
+--- !u!114 &2022681434806221536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6933274757407675084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6641966a2f41ce94baf697308071f1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMaterial: {fileID: 2100000, guid: 623c30faaffd48e4e8376659879b649f, type: 2}
+  selectedMaterial: {fileID: 2100000, guid: 4bbe902288b9ee74abc9184e04041973, type: 2}
+  objectRenderer: {fileID: 5434040642975307606}

@@ -5,6 +5,8 @@ public class ClickableTile : MonoBehaviour
 {
     public int tileX;
     public int tileY;
+
+    
     public TileMap map;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnMouseUp()
@@ -13,4 +15,6 @@ public class ClickableTile : MonoBehaviour
 
         map.GeneratePathTo(tileX, tileY);
     }
+
+
 }

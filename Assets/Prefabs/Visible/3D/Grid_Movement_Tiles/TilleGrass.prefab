@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5984335334030428705}
   - component: {fileID: 3598473500639075908}
   - component: {fileID: 6320658039701152306}
+  - component: {fileID: 8500661536470568573}
   m_Layer: 0
   m_Name: TilleGrass
   m_TagString: Untagged
@@ -125,3 +126,18 @@ MonoBehaviour:
   tileX: 0
   tileY: 0
   map: {fileID: 0}
+--- !u!114 &8500661536470568573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184570512784924628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6641966a2f41ce94baf697308071f1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverMaterial: {fileID: 2100000, guid: 623c30faaffd48e4e8376659879b649f, type: 2}
+  selectedMaterial: {fileID: 2100000, guid: 4bbe902288b9ee74abc9184e04041973, type: 2}
+  objectRenderer: {fileID: 5984335334030428705}

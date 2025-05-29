@@ -53,8 +53,8 @@ namespace Grid_Movement
             currentPath.RemoveAt(0);
 
             //Destination reached
-                if (currentPath.Count == 1)
-                {
+            if (currentPath.Count == 1)
+            {
                     ClearPath();
 
                 }
